@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		
+	<context:annotation-config />
+	<bean class="co.hw.student.BeanConfig" /> <!-- xml에서 java불러오는 방식  -->
+	
+	<bean id="student2" class="co.hw.student.Student">
+		<constructor-arg name="name" value="박기자" /> <!-- 생성자에게 값을 넣을 때는 constructor-arg을 사용한다 -->
+		<constructor-arg name="age" value="30" />
+		<constructor-arg name="hobbys"> <!-- 배열 -->
+			<list> 
+				<value>여행</value>
+				<value>독서</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="170" /> <!-- 일반 set에 넣을 때는 property를 사용한다 -->
+		<!-- map은 map으로 해서 키,값을 넣어준다  -->
+	</bean>
+
+
+</beans>

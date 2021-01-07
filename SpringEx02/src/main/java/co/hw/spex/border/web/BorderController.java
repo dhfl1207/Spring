@@ -36,7 +36,7 @@ public class BorderController {
 		String viewPath = null;
 		n = borderService.insert(vo);
 		if(n != 0) {
-			viewPath = "border/successinput";
+			viewPath = "redirect:list";
 		}else {
 			viewPath="border/inputfail";
 		}

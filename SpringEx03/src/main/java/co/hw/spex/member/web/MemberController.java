@@ -96,4 +96,10 @@ public class MemberController {
 		
 		return viewPath;
 	}
+	
+	@RequestMapping("/memberSelect.do")
+	public String memberSelect(MemberVo vo, Model model) throws SQLException {
+		MemberVo member = memberService.memberSelect(vo);
+		return "member/memberSelect";
+	}
 }

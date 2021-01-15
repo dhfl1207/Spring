@@ -2,17 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
-<mapper namespace="co.hw.spex.member.service.MemberDao">
-	<select id="memberlist" resultType="co.hw.spex.member.vo.MemberVo">
-		SELECT * FROM MEMBER	
+<mapper namespace="MemberDAO">
+	<select id="memberList" 
+		resultType="co.hw.spex.member.vo.MemberVo">
+		SELECT * FROM MEMBER
 	</select>
-	
-	<select id="memberSelect" resultType="co.hw.spex.member.vo.MemberVo">
+
+	<select id="memberSelect"
+		resultType="co.hw.spex.member.vo.MemberVo">
 		SELECT * FROM MEMBER WHERE MEMBERID = #{MEMBERID}
 	</select>
 	
-	<insert id=""></insert>
-	<update id=""></update>
-	<delete id=""></delete>
 </mapper>

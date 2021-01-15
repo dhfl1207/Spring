@@ -2,6 +2,7 @@ package co.hw.spex.member.web;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class MemberController {
 	
 	@RequestMapping("/memberList.do")
 	public String memberList(Model model) throws SQLException {
-		ArrayList<MemberVo> members = new ArrayList<MemberVo>();
+		List<MemberVo> members = new ArrayList<MemberVo>();
 		members = memberService.memberList();
 		model.addAttribute("members", members);
 		return "member/memberList";

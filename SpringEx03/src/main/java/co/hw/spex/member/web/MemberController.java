@@ -7,10 +7,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.hw.spex.member.service.MemberService;
+import co.hw.spex.member.service.impl.MemberMapper;
 import co.hw.spex.member.vo.MemberVo;
 
 @Controller
@@ -19,10 +22,18 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	MemberMapper dao;
+	
+	@RequestMapping("/ajax/memberList.do")
+	@ResponseBody
+	public List<MemberVo> ajaxMemberList(MemberVo vo) throws SQLException {
+		return memberService.memberList(vo);
+	}
+	
 	@RequestMapping("/memberList.do")
-	public String memberList(Model model) throws SQLException {
-		List<MemberVo> members = new ArrayList<MemberVo>();
-		members = memberService.memberList();
+	public String memberList(Model model, @ModelAttribute("vo") MemberVo vo) throws SQLException {
+		List<MemberVo> members = memberService.memberList(vo);
 		model.addAttribute("members", members);
 		return "member/memberList";
 	}

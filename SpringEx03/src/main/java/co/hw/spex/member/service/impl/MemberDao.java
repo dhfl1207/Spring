@@ -1,4 +1,4 @@
-package co.hw.spex.member.serviceImpl;
+package co.hw.spex.member.service.impl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class MemberDao implements MemberService {
 	private JdbcTemplate jdbcTamplate;
 	
 	@Override
-	public ArrayList<MemberVo> memberList() throws SQLException{
+	public ArrayList<MemberVo> memberList(MemberVo vo) throws SQLException{
 		String sql = "select * from member";
 		ArrayList<MemberVo> list = (ArrayList<MemberVo>) jdbcTamplate.query(sql, new MemberRowMapper()); 
 		//여러개를 가지고 오는 쿼리 jdbcTamplate.query라고 쓴다.

@@ -2,15 +2,49 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MemberDAO">
-	<select id="memberList" 
-		resultType="co.hw.spex.member.vo.MemberVo">
+<mapper namespace="co.hw.spex.member.service.impl.MemberMapper">
+
+	<insert id="deptIns" statementType="CALLABLE" parameterType="co.hw.spex.member.vo.DeptVO">
+		{ call HR.DEPT_INS(
+			#{dapartmentName}, 
+			#{departmentId, mode=OUT, jdbcType=NUMERIC, javaType=int}, 
+			#{outMsg, mode=OUT, jdbcType=VARCHAR, javaType=string} 
+			)
+		}
+	</insert>
+	
+	<select id="memberList" resultType="MemberVo" parameterType="co.hw.spex.member.vo.DeptVO">
 		SELECT * FROM MEMBER
+		<where>
+			<if test="memberId != null and memberId != ''">
+				memberId like '%' || #{memberId} || '%' 
+			</if>
+			<if test="memberName != null and memberName != ''">
+				and memberName like '%' || #{memberName} || '%' 
+			</if>
+			<if test="memberAuth != null and memberAuth != ''">
+				and memberAuth = #{memberAuth}
+			</if>
+		</where>
+		order by memberId
 	</select>
 
-	<select id="memberSelect"
-		resultType="co.hw.spex.member.vo.MemberVo">
-		SELECT * FROM MEMBER WHERE MEMBERID = #{MEMBERID}
+	<select id="memberSelect" resultType="MemberVo">
+		SELECT * FROM MEMBER WHERE MEMBERID = #{memberId}
 	</select>
 	
+	<insert id = "memberInsert">
+		insert into member values (#{memberId}, #{memberName}, #{password}, #{memberAuth}, #{memberPoint})
+	</insert>
+	
+	<update id="memberUpdate">
+		update member set password = #{password}, memberAuth = #{memberAuth}
+		<where>
+			memberId like '%' || #{memberId} || '%'
+		</where>
+	</update>
+	
+	<delete id="memberDelete">
+		delete from member where memberId = #{memberId}
+	</delete>
 </mapper>

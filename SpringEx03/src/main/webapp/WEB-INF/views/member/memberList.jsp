@@ -10,6 +10,15 @@
 <body>
 	<div align="center">
 		<h2>회원목록</h2>
+		<div>
+		${vo }
+         <form action="memberList.do">
+            id<input name="memberId" value="${vo.memberId }">
+            name<input name="memberName value="${vo.memberName }">
+            auth<input name="memberAuth value="${vo.memberAuth }">
+            <button>검색</button>
+         </form>
+      </div>
 		<c:forEach var = "member" items="${members }">
 			${member.memberId } &nbsp;&nbsp;&nbsp;
 			${member.memberName } &nbsp;&nbsp;&nbsp;

@@ -14,19 +14,24 @@
 	</insert>
 	
 	<select id="memberList" resultType="MemberVo" parameterType="co.hw.spex.member.vo.DeptVO">
-		SELECT * FROM MEMBER
-		<where>
-			<if test="memberId != null and memberId != ''">
-				memberId like '%' || #{memberId} || '%' 
-			</if>
-			<if test="memberName != null and memberName != ''">
-				and memberName like '%' || #{memberName} || '%' 
-			</if>
-			<if test="memberAuth != null and memberAuth != ''">
-				and memberAuth = #{memberAuth}
-			</if>
-		</where>
-		order by memberId
+		<!-- sql-map-config-spring.xml에서 typeAlias로 패키지 경로 지정해줌. parameterType은 생략해도 됨 -->
+		 SELECT a.* FROM (SELECT b.*, rownum rn FROM (
+         SELECT *
+         FROM member
+         <where>
+            <if test="memberId != null and memberId !=''">
+               memberid like '%' || #{memberId} || '%'
+            </if>
+            <if test="memberName != null and memberName !=''">
+               and membername like '%' || #{memberName} || '%'
+            </if>
+            <if test="memberAuth != null and memberAuth !=''">
+               and memberauth = #{memberAuth}
+            </if>
+         </where>
+         order by memberId
+      ) b ) a WHERE rn BETWEEN #{start} and #{end}
+
 	</select>
 
 	<select id="memberSelect" resultType="MemberVo">

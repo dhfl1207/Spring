@@ -17,6 +17,8 @@ public class MemberVo {
 	@JsonIgnore private String password;
 	private String memberAuth;
 	private int memberPoint;
+	int start;
+	int end;
 	
 
 }

@@ -15,9 +15,11 @@
 	</settings>
 	<!-- Alias 설정 -->
 	<typeAliases>
-		<typeAlias type="co.hw.spex.member.vo.MemberVo" 
-					alias="MemberVo"/>
-		<package name="co.hw.spex.member.vo"/>
+		<typeAlias type="co.hw.spex.member.vo.MemberVo"
+			alias="MemberVo" />
+		<typeAlias type="co.hw.spex.users.vo.UserVO"
+			alias="user" />
+		<package name="co.hw.spex.emp.vo" />
 	</typeAliases>
 	<typeHandlers>
 		<!-- java.sql.Timestamp 를 java.util.Date 형으로 반환 -->

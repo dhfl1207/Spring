@@ -1,4 +1,4 @@
-package co.hw.spex.member.service;
+package co.hw.spex.member.service.impl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,16 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import co.hw.spex.member.service.MemberRowMapper;
+import co.hw.spex.member.service.MemberService;
 import co.hw.spex.member.vo.MemberVo;
 
-@Repository("memberDao")
+//@Repository("memberDao")
 public class MemberDao implements MemberService {
 	
-	@Autowired
+	@Autowired  //스프링 컨테이너어 등록된 bean을 찾아서 연결한다.
 	private JdbcTemplate jdbcTamplate;
 	
 	@Override
-	public ArrayList<MemberVo> memberList() throws SQLException{
+	public ArrayList<MemberVo> memberList(MemberVo vo) throws SQLException{
 		String sql = "select * from member";
 		ArrayList<MemberVo> list = (ArrayList<MemberVo>) jdbcTamplate.query(sql, new MemberRowMapper()); 
 		//여러개를 가지고 오는 쿼리 jdbcTamplate.query라고 쓴다.

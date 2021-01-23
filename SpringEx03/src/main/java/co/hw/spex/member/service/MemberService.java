@@ -2,11 +2,12 @@ package co.hw.spex.member.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import co.hw.spex.member.vo.MemberVo;
 
 public interface MemberService {
-	ArrayList<MemberVo> memberList() throws SQLException; //멤버 목록 조회
+	List<MemberVo> memberList(MemberVo vo) throws SQLException; //멤버 목록 조회
 	MemberVo memberSelect(MemberVo vo) throws SQLException; //멤버 한 명 조회
 	int memberInsert(MemberVo vo) throws SQLException;
 	int memberUpdate(MemberVo vo) throws SQLException;

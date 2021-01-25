@@ -8,7 +8,7 @@ public class MainController {
 	
 	@RequestMapping("/main.do")
 	public String main() {
-		return "main/main";
+		return "no/main/main";
 	}
 
 }

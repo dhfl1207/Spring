@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.hw.spex.emp.service.impl.EmpMapper">
+	<!-- 사원등록 -->
+	
+	<!-- 사원수정 -->
+	
+	<!-- 사원전체조회 -->
+	
+	<!-- 사원단건조회 -->
+	<select id="getEmp" resultType="EmpVo">
+	SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = #{EMPLOYEE_ID}
+	</select>
+	
+	<!-- 부서전체조회 -->
+	<select id="getDept" resultType="DeptVo">
+	SELECT DEPARTMENT_ID, DEPARTMENT_NAME
+		FROM HR.DEPARTMENTS
+	ORDER BY DEPARTMENT_NAME
+	</select>
+	
+	<!-- job전체조회 -->
+	<select id="getJob" resultType="JobVo">
+	SELECT JOB_ID, JOB_TITLE
+		FROM HR.JOBS
+	ORDER BY JOB_TITLE
+	</select>
+</mapper>

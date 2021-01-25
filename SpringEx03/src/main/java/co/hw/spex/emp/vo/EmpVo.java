@@ -15,5 +15,6 @@ public class EmpVo {
 	private String commission_pct;                              
 	private String manager_id;                                         
 	private String department_id;
+	private String profile;
 } 
             

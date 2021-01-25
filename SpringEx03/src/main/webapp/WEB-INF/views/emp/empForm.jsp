@@ -9,7 +9,10 @@
 </head>
 <body>
 <h3>사원등록</h3>
-<form:form modelAttribute="empVo"> 
+<a href="download/123.png">다운받기</a>
+<form:form modelAttribute="empVo" action="insUpdEmp"
+		   method="post" encType="multipart/form-data"> 
+	<input type="file" name="uploadfile" multiple="multiple"><br>
 	EMPLOYEE_ID<form:input path="employee_id" /> <br>
 	FIRST_NAME<form:input path="first_name" /> <br>
 	LAST_NAME<form:input path="last_name" /> <br>
